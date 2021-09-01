@@ -4,10 +4,16 @@ public with sharing class BoatDataService {
         return [SELECT Id, Name FROM BoatType__c];
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<Boat__c> getBoats(String boatTypeId){
-        return [SELECT Id, Name, BoatType__c, Contact__r.Name, Description__c, 
-                    Geolocation__c, Length__c, Picture__c, Price__c, Year_Built__c 
-                FROM Boat__c WHERE BoatType__c = :boatTypeId];
+        if (String.isEmpty(boatTypeId)) {
+            return [SELECT Id, Name, BoatType__c, BoatType__r.Name, Contact__r.Name, Description__c, 
+                        Geolocation__c, Length__c, Picture__c, Price__c, Year_Built__c 
+                    FROM Boat__c];
+        } else {
+            return [SELECT Id, Name, BoatType__c, BoatType__r.Name, Contact__r.Name, Description__c, 
+                        Geolocation__c, Length__c, Picture__c, Price__c, Year_Built__c 
+                    FROM Boat__c WHERE BoatType__c = :boatTypeId];
+        }
     }
 }

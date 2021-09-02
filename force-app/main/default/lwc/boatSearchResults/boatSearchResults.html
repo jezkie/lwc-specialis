@@ -1,18 +1,27 @@
 <template>
     <lightning-tabset variant="scoped">
         <lightning-tab label="Gallery">
-            <!-- <div class="slds-scrollable_y"> -->
+            <div class="slds-scrollable_y">
                 <lightning-layout horizontal-align="center" multiple-rows="true">
                     <template for:each={boats.data} for:item="boat">
-                        <lightning-layout-item key={boat.Id} padding="around-small">
-                            <c-boat-tile boat={boat}></c-boat-tile>
+                        <lightning-layout-item key={boat.Id} padding="around-small" size="12" small-device-size="6" medium-device-size="4" large-device-size="3">
+                            <c-boat-tile boat={boat} selected-boat-id={selectedBoatId} onboatselect={updateSelectedTile}></c-boat-tile>
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>
-            <!-- </div> -->
+            </div>
         </lightning-tab>
         <lightning-tab label="Boat Editor">
-            Two Content !
+            <div class="slds-scrollable_y">
+                <lightning-datatable 
+                    key-field="Id" 
+                    data={boats.data} 
+                    draft-values={draftValues}
+                    columns={columns} 
+                    onsave={handleSave}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </div>
         </lightning-tab>
         <lightning-tab label="Boats Near Me">
             Three Content !

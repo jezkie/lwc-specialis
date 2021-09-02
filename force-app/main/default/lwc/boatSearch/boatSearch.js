@@ -6,13 +6,13 @@ export default class BoatSearch extends NavigationMixin(LightningElement) {
 
     // Handles loading event
     handleLoading() {
-        debugger;
+        // debugger;
         this.isLoading = true;
     }
 
     // Handles done loading event
     handleDoneLoading() {
-        debugger;
+        // debugger;
         this.isLoading = false;
     }
 

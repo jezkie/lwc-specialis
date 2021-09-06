@@ -25,11 +25,15 @@ public with sharing class BoatDataService {
         return Database.query(query);
     }
 
-    @AuraEnabled(cacheable=true)
-    public static void updateBoatList(Object data){
-        List<Boat__c> boats = (List<Boat__c>) JSON.deserialize(JSON.serialize(data), List<Boat__c>.class);
-        System.debug('boats --> ' + boats);
-        update boats;
+    @AuraEnabled
+    public static String updateBoatList(Object data){
+        List<Boat__c> boatsForUpdate = (List<Boat__c>) JSON.deserialize(
+            JSON.serialize(data),
+            List<Boat__c>.class
+        );
+        
+        update boatsForUpdate;
+        return 'Success: Boats updated successfully';
     }
 
     @AuraEnabled(cacheable=true)

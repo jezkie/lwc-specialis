@@ -1,4 +1,5 @@
 import { wire, LightningElement, api } from "lwc";
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 import getBoatsByLocation from '@salesforce/apex/BoatDataService.getBoatsByLocation';
 

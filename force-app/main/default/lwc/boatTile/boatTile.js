@@ -1,6 +1,9 @@
-import { LightningElement, api } from 'lwc';
-
 // imports
+import { LightningElement, api, wire } from 'lwc';
+
+import { publish, MessageContext } from 'lightning/messageService';
+// import BOATMC from '@salesforce/messageChannel/BoatMessageChannel__c';
+
 const TILE_WRAPPER_SELECTED_CLASS = 'tile-wrapper selected';
 const TILE_WRAPPER_UNSELECTED_CLASS = 'tile-wrapper';
 
@@ -8,6 +11,9 @@ export default class BoatTile extends LightningElement {
 
     @api boat;
     @api selectedBoatId;
+
+    @wire(MessageContext)
+    messageContext;
     
     // Getter for dynamically setting the background image for the picture
     get backgroundStyle() {
@@ -25,6 +31,9 @@ export default class BoatTile extends LightningElement {
         this.dispatchEvent(new CustomEvent('boatselect', {
             detail: { boatId: this.boat.Id }
         }));
+
+        const payload = { recordId: this.boat.Id };
+        // publish(this.messageContext, BOATMC, payload);
     }
   }
   

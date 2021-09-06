@@ -1,4 +1,3 @@
-// import BOATMC from the message channel
 import BOATMC from '@salesforce/messageChannel/BoatMessageChannel__c';
 import { getRecord } from "lightning/uiRecordApi";
 import { LightningElement, wire, api } from "lwc";
@@ -9,7 +8,6 @@ const LATITUDE_FIELD = 'Boat__c.Geolocation__Latitude__s';
 const BOAT_FIELDS = [LONGITUDE_FIELD, LATITUDE_FIELD];
 
 export default class BoatMap extends LightningElement {
-  // private
   subscription = null;
   boatId;
 
@@ -32,7 +30,7 @@ export default class BoatMap extends LightningElement {
 
   // Getting record's location to construct map markers using recordId
   // Wire the getRecord method using ('$boatId')
-  @wire(getRecord, { recordId: '$boatId', fields: BOAT_FIELDS})
+  @wire(getRecord, { recordId: '$boatId', fields: BOAT_FIELDS })
   wiredRecord({ error, data }) {
     // Error handling
     if (data) {

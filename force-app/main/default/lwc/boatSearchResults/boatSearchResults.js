@@ -3,7 +3,6 @@ import { LightningElement, api, wire, track } from 'lwc';
 import getBoats from '@salesforce/apex/BoatDataService.getBoats';
 import updateBoatList from '@salesforce/apex/BoatDataService.updateBoatList';
 
-import { createRecord, getRecord, updateRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
 import { publish, MessageContext } from 'lightning/messageService';
@@ -56,7 +55,7 @@ export default class BoatSearchResults extends LightningElement {
 
     updateSelectedTile(event) {
         this.selectedBoatId = event.detail.boatId;
-        this.sendMessageService(selectedBoatId);
+        this.sendMessageService(this.selectedBoatId);
     }
 
     sendMessageService(boatId) {

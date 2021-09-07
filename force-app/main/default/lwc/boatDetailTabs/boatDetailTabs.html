@@ -23,7 +23,7 @@
                 </lightning-card>
             </lightning-tab>
             <lightning-tab label={label.labelReviews} value="reviews">
-                Reviews!
+                <c-boat-reviews record-id={boatId}></c-boat-reviews>
             </lightning-tab>
             <lightning-tab label={label.labelAddReview} value="add">
                 <c-boat-add-review-form oncreatereview={handleReviewCreated} record-id={boatId}></c-boat-add-review-form>

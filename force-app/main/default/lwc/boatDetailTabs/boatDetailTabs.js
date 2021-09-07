@@ -19,7 +19,7 @@ const BOAT_FIELDS = [BOAT_ID_FIELD, BOAT_NAME_FIELD];
 
 export default class BoatDetailTabs extends NavigationMixin(LightningElement) {
     // 'a025g000004sj3iAAA';
-    boatId; 
+  boatId; 
 
   @wire (getRecord, { recordId: '$boatId', fields: BOAT_FIELDS })
   wiredRecord;
@@ -34,6 +34,8 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement) {
     labelFullDetails,
     labelPleaseSelectABoat,
   };
+
+  activeTab = 'details';
   
   // Decide when to show or hide the icon
   // returns 'utility:anchor' or null
@@ -80,5 +82,7 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement) {
   }
   
   // Navigates back to the review list, and refreshes reviews component
-  handleReviewCreated() {}
+  handleReviewCreated(event) {
+    this.activeTab = 'reviews';
+  }
 }

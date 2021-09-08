@@ -52,8 +52,6 @@ export default class BoatAddReviewForm extends LightningElement {
   // Shows a toast message once form is submitted successfully
   // Dispatches event when a review is created
   handleSuccess() {
-    // TODO: dispatch the custom event and show the success message
-    debugger;
     this.dispatchEvent(new ShowToastEvent({
       title: SUCCESS_TITLE, message: 'Review has been submitted.', variant: SUCCESS_VARIANT
     }));
@@ -64,10 +62,8 @@ export default class BoatAddReviewForm extends LightningElement {
   }
 
   // Clears form data upon submission
-  // TODO: it must reset each lightning-input-field
   handleReset() {
-    debugger;
-    this.rating = 0
+    this.rating = 0;
     const inputFields = this.template.querySelectorAll(
       'lightning-input-field'
     );

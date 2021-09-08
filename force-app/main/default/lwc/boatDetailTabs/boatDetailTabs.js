@@ -35,8 +35,6 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement) {
     labelPleaseSelectABoat,
   };
 
-  activeTab = 'details';
-  
   // Decide when to show or hide the icon
   // returns 'utility:anchor' or null
   get detailsTabIconName() {
@@ -83,6 +81,7 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement) {
   
   // Navigates back to the review list, and refreshes reviews component
   handleReviewCreated(event) {
-    this.activeTab = 'reviews';
+    this.template.querySelector('lightning-tabset').activeTabValue = 'reviews';
+    this.template.querySelector('c-boat-reviews').refresh();
   }
 }

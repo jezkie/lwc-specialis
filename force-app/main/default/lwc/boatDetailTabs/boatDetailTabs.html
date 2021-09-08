@@ -1,11 +1,11 @@
 <template>
     <template if:false={wiredRecord.data}>
-        <span class="slds-align_absolute-center no-boat-height">
-            {label.labelPleaseSelectABoat}
-        </span>
+        <lightning-card>
+            <span class="slds-align_absolute-center no-boat-height">{label.labelPleaseSelectABoat}</span>
+        </lightning-card>
     </template>
     <template if:true={wiredRecord.data}>
-        <lightning-tabset variant="scoped" active-tab-value={activeTab}>
+        <lightning-tabset variant="scoped" active-tab-value="">
             <lightning-tab label={label.labelDetails} value="details">
                 <lightning-card title={boatName} icon-name={detailsTabIconName}>
                     <lightning-button slot="actions" label={label.labelFullDetails} onclick={navigateToRecordViewPage}></lightning-button>

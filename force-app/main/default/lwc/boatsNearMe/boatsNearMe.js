@@ -14,6 +14,7 @@ export default class BoatsNearMe extends LightningElement {
     isRendered;
     latitude;
     longitude;
+    loadSuccess = false;
 
     // Add the wired method from the Apex Class
     // Name it getBoatsByLocation, and use latitude, longitude and boatTypeId
@@ -54,11 +55,11 @@ export default class BoatsNearMe extends LightningElement {
                 this.latitude = position.coords.latitude;
                 this.longitude = position.coords.longitude;
             });
-            
+            this.loadSuccess = true;
         } catch (error) {
+            this.loadSuccess = false;
+            this.isLoading = false;
             console.log(error);
-            this.latitude = 10.7976397559411; 
-            this.longitude = 106.78473749884483;
         }
     }
 
